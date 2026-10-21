@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StyleNest is a responsive fashion shopping website demo built with HTML, CSS and JavaScript." />
+  <title>StyleNest — Fashion, Your Way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="announcement">✨ New season, new style — enjoy 20% off selected looks</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="StyleNest home"><span class="brand-mark">S</span>tyleNest<span class="brand-dot">.</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-category="All">Home</button>
+      <button class="nav-link" data-category="Women">Women</button>
+      <button class="nav-link" data-category="Men">Men</button>
+      <button class="nav-link" data-category="Accessories">Accessories</button>
+    </nav>
+    <div class="header-actions">
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search styles..." aria-label="Search products"></label>
+      <button class="icon-button" id="wishlistToggle" title="Show wishlist" aria-label="Show wishlist">♡<span class="action-label">Wishlist</span></button>
+      <button class="icon-button cart-trigger" id="cartToggle" title="Open cart" aria-label="Open cart">♧<span class="action-label">Bag</span><span class="count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE STYLE EDIT · 2026</p>
+        <h1>Find your<br><em>everyday</em> iconic.</h1>
+        <p class="hero-text">Thoughtful fits. Fresh colours. Pieces that feel like you.</p>
+        <button class="primary-button" id="shopNow">Explore the collection <span>↗</span></button>
+        <div class="hero-note"><span class="note-line"></span> New arrivals are here</div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-image image-one"></div>
+        <div class="hero-image image-two"></div>
+        <div class="hero-sticker">YOUR<br>STYLE,<br><strong>YOUR RULES</strong></div>
+        <div class="hero-caption">CURATED FOR YOU / 01</div>
+      </div>
+    </section>
+
+    <section class="category-strip" aria-label="Shop by category">
+      <button class="category-tile women-tile" data-category="Women"><span>01 / HER EDIT</span><strong>Women's wear</strong><b>Explore ↗</b></button>
+      <button class="category-tile men-tile" data-category="Men"><span>02 / HIS EDIT</span><strong>Men's wear</strong><b>Explore ↗</b></button>
+      <button class="category-tile accessories-tile" data-category="Accessories"><span>03 / FINISHING TOUCH</span><strong>Accessories</strong><b>Explore ↗</b></button>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow">A LITTLE SOMETHING FOR YOU</p><h2>Trending <em>right now</em></h2></div>
+        <p class="result-count" id="resultCount">Showing all styles</p>
+      </div>
+      <div class="shop-controls">
+        <div class="filter-pills" id="filterPills">
+          <button class="filter-pill selected" data-filter="All">All styles</button>
+          <button class="filter-pill" data-filter="Women">Women</button>
+          <button class="filter-pill" data-filter="Men">Men</button>
+          <button class="filter-pill" data-filter="Accessories">Accessories</button>
+        </div>
+        <label class="sort-label">Sort by
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="rating">Top rated</option>
+          </select>
+        </label>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="emptyState"><span>✳</span><h3>No styles found</h3><p>Try another search or category.</p><button class="text-button" id="resetFilters">Reset filters ↗</button></div>
+    </section>
+
+    <section class="newsletter">
+      <div><p class="eyebrow">THE GOOD STUFF, FIRST</p><h2>Get dressed with <em>inspiration.</em></h2><p>Sign up for new drops, style notes and a little treat on your first order.</p></div>
+      <form id="newsletterForm"><label class="sr-only" for="emailInput">Email address</label><input id="emailInput" type="email" placeholder="Your email address" required><button class="primary-button" type="submit">Join the list ↗</button><small id="newsletterMessage">No spam. Just good style.</small></form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">S</span>tyleNest<span class="brand-dot">.</span></a><p>Wear what feels like you.</p><div class="footer-links"><a href="#shop">Shop</a><a href="#shop">New arrivals</a><a href="README.md">About this project</a></div><small>© 2026 StyleNest. Demo project for learning purposes.</small></footer>
+
+  <div class="overlay hidden" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR EDIT</p><h2>Your bag <span id="drawerCount">(0)</span></h2></div><button class="close-button" id="closeCart" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer"><div class="subtotal"><span>Subtotal</span><strong id="subtotal">₹0</strong></div><p>Shipping and taxes calculated at checkout.</p><button class="primary-button checkout-button" id="checkoutButton">Continue to checkout ↗</button><small id="checkoutMessage">Demo only — no payment is processed.</small></div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
